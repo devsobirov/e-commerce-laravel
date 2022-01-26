@@ -13,6 +13,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// domain.uz?referral=ins
+// domain.uz?referral=tg
+// domain.uz?referral=fb
+
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/game', function () {
+   echo \request()->number;
+})->middleware('game');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
