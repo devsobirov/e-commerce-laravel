@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,7 +32,8 @@ Auth::routes();
  * Administrator va Direktor boshqara oladigan routlar
  */
 Route::middleware('user-role')->prefix('admin')->name('admin.')->group(function (){
-    Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/', [DashboardController::class, 'index'])->name('home');
+    Route::resource('/categories', CategoryController::class)->names('category');
 
 });
 
