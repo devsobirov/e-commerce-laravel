@@ -55,6 +55,8 @@ class RegisterController extends Controller
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
+    // name="parol"
+    // name="parol_confirmation"
 
     /**
      * Create a new user instance after a valid registration.
@@ -64,10 +66,13 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $role = 'admin';
+
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'role' => $role
         ]);
     }
 }
